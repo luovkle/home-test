@@ -24,4 +24,8 @@ def discover(page: int):
 # Search movies by title
 @app.get("/search")
 def search(title: str):
-    return {"msg": {"title": title}}
+    response = requests.get(
+        api_url + f"/3/search/movie?query={title}",
+        headers=headers,
+    )
+    return {"response": response.json()}

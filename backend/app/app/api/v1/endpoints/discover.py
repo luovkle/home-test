@@ -1,12 +1,10 @@
-import os
-
 import requests
 from fastapi import APIRouter
 
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+from app.core.config import settings
 
 api_url = "https://api.themoviedb.org"
-headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+headers = {"Authorization": f"Bearer {settings.TMDB_ACCESS_TOKEN}"}
 
 router = APIRouter()
 

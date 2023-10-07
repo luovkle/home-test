@@ -8,6 +8,7 @@ fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 requests = "*"
 pydantic-settings = "*"
+pymongo = "*"
 
 [dev-packages]
 

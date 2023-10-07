@@ -1,4 +1,12 @@
+import { useState, ChangeEvent } from "react";
+
 export default function SearchBar() {
+  const [title, setTitle] = useState("");
+
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setTitle(target.value);
+  };
+
   return (
     <form>
       <label
@@ -31,6 +39,8 @@ export default function SearchBar() {
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search Movies"
           required
+          value={title}
+          onChange={handleChange}
         />
         <button
           type="submit"

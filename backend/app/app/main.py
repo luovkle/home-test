@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.api.v1.api import api_router
+from app.db.client import client
 
 app = FastAPI()
 app.add_middleware(
@@ -14,3 +15,8 @@ app.add_middleware(
 )
 app.include_router(api_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.on_event("shutdown")
+def shutdown_event():
+    client.close()

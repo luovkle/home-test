@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { MovieGrid } from "./components";
+import { MovieGrid, SearchBar } from "./components";
 
 export const App = () => {
   const [page, setPage] = useState(1);
 
   return (
     <>
+      <SearchBar />
       <MovieGrid page={page} />
       <button
         type="button"

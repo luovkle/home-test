@@ -15,17 +15,19 @@ export default function MovieGrid({ page }: { page: number }) {
   }, [page]);
 
   return (
-    <ul>
-      {movies.map((movie) => (
-        <li key={movie.id}>
-          <MovieCard
-            original_title={movie.original_title}
-            release_date={movie.release_date}
-            poster_path={movie.poster_path}
-            overview={movie.overview}
-          />
-        </li>
-      ))}
-    </ul>
+    <div className="w-full flex justify-center p-16">
+      <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+        {movies.map((movie) => (
+          <li key={movie.id}>
+            <MovieCard
+              original_title={movie.original_title}
+              release_date={movie.release_date}
+              poster_path={movie.poster_path}
+              overview={movie.overview}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

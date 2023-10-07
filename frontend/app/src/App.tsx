@@ -29,6 +29,12 @@ export const App = () => {
       ))}
       <button
         type="button"
+        onClick={() => setPage((curretPage) => curretPage - 1)}
+      >
+        Back
+      </button>
+      <button
+        type="button"
         onClick={() => setPage((curretPage) => curretPage + 1)}
       >
         Next

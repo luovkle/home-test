@@ -1,3 +1,6 @@
 # Environments
 .env
 .venv
+
+# Static files
+static/

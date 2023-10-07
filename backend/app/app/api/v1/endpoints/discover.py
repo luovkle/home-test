@@ -22,9 +22,11 @@ def discover(db: Database = Depends(get_db), *, page: int):
             api_url + f"/3/discover/movie?page={page}&sort_by=popularity.desc",
             headers=headers,
         )
-        id = db.discover.insert_one(response.json()).inserted_id
-        doc = db.discover.find_one({"_id": id})
-        # If insertion failed, raise a 404 error
+        if response.status_code == 200:
+            id = db.discover.insert_one(response.json()).inserted_id
+            doc = db.discover.find_one({"_id": id})
+        # If insertion failed or the response status code is not 200, raise a
+        # 404 error.
         if not doc:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     # Remove the "_id" field before returning the document

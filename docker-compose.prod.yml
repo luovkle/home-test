@@ -18,5 +18,15 @@ services:
       - 8000:8000
     depends_on:
       - mongo
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_BACKEND_HOST: ${VITE_BACKEND_HOST}
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - backend
 volumes:
   data:

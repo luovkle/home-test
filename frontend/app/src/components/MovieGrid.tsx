@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 
 import { MovieCard } from "./";
 
+interface MovieType {
+  id: number;
+  original_title: string;
+  poster_path: string;
+  release_date: string;
+  overview: string;
+}
+
 export default function MovieGrid({ page }: { page: number }) {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<MovieType[]>([]);
 
   useEffect(() => {
     axios

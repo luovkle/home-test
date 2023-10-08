@@ -67,16 +67,13 @@ export default function SearchBar() {
           value={title}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Search
-        </button>
       </div>
-      <ul>
+      <ul className="bg-gray-800 text-white px-4 pb-4 pt-2 rounded-b-xl">
         {results.map((result) => (
-          <li key={result.id}>
+          <li
+            key={result.id}
+            className="hover:bg-blue-500 px-2 py-1 rounded-md"
+          >
             <button type="button" onClick={() => handleClick(result.id)}>
               {result.original_title}
             </button>

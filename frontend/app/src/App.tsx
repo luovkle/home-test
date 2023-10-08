@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import { SearchBar } from "./components";
-import { Home } from "./pages";
+import { Home, Movie } from "./pages";
 
 export const App = () => {
   return (
@@ -9,6 +9,7 @@ export const App = () => {
       <SearchBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path=":movieId" element={<Movie />} />
       </Routes>
     </>
   );

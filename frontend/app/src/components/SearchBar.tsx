@@ -68,18 +68,20 @@ export default function SearchBar() {
           onChange={handleChange}
         />
       </div>
-      <ul className="bg-gray-800 text-white px-4 pb-4 pt-2 rounded-b-xl">
-        {results.map((result) => (
-          <li
-            key={result.id}
-            className="hover:bg-blue-500 px-2 py-1 rounded-md"
-          >
-            <button type="button" onClick={() => handleClick(result.id)}>
-              {result.original_title}
-            </button>
-          </li>
-        ))}
-      </ul>
+      {results.length > 0 && (
+        <ul className="bg-gray-800 text-white px-4 pb-4 pt-2 rounded-b-xl">
+          {results.map((result) => (
+            <li
+              key={result.id}
+              className="hover:bg-blue-500 px-2 py-1 rounded-md"
+            >
+              <button type="button" onClick={() => handleClick(result.id)}>
+                {result.original_title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

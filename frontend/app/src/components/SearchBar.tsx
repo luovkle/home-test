@@ -1,10 +1,17 @@
 import { useState, ChangeEvent } from "react";
+import useWebSocket from "react-use-websocket";
+
+const ws_url = "ws://localhost:8000/api/v1/search/ws";
 
 export default function SearchBar() {
   const [title, setTitle] = useState("");
 
+  const { sendMessage, lastMessage } = useWebSocket(ws_url);
+
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setTitle(target.value);
+    sendMessage(title);
+    if (lastMessage) console.log(JSON.parse(lastMessage.data));
   };
 
   return (

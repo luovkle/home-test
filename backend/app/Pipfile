@@ -17,3 +17,4 @@ python_version = "3.11"
 
 [scripts]
 dev = "uvicorn app.main:app --reload"
+prod = "uvicorn app.main:app"

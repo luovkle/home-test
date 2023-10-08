@@ -14,3 +14,6 @@ pymongo = "*"
 
 [requires]
 python_version = "3.11"
+
+[scripts]
+dev = "uvicorn app.main:app --reload"

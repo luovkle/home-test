@@ -48,7 +48,7 @@ export default function Movie() {
 
   return (
     <>
-      <button type="button" onClick={() => navigate(-1)}>
+      <button type="button" onClick={() => navigate("/")}>
         Back
       </button>
       <img

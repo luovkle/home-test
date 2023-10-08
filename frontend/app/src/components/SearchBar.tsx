@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import { Link } from "react-router-dom";
 import useWebSocket from "react-use-websocket";
 
 interface Result {
@@ -67,7 +68,9 @@ export default function SearchBar() {
       </div>
       <ul>
         {results.map((result) => (
-          <li key={result.id}>{result.original_title}</li>
+          <li key={result.id}>
+            <Link to={`/${result.id}`}>{result.original_title}</Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -4,14 +4,19 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.v1.api import api_router
 from app.db.client import client
+from app.core.config import settings
 
-app = FastAPI()
+app = FastAPI(
+    title=settings.APP_TITLE,
+    version=settings.APP_VERSION,
+    docs_url=settings.APP_DOCS_URL,
+    redoc_url=settings.APP_REDOC_URL,
+)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["GET"],
-    allow_headers=["*"],
-    allow_credentials=True,
+    allow_origins=settings.APP_ALLOW_ORIGINS,
+    allow_headers=settings.APP_ALLOW_HEADERS,
+    allow_methods=settings.APP_ALLOW_METHODS,
 )
 app.include_router(api_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")

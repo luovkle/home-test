@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useWebSocket from "react-use-websocket";
 
 interface Result {
@@ -13,6 +13,8 @@ export default function SearchBar() {
   const [title, setTitle] = useState("");
   const [results, setResults] = useState<Result[]>([]);
 
+  const navigate = useNavigate();
+
   const { sendMessage, lastMessage } = useWebSocket(ws_url);
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +24,12 @@ export default function SearchBar() {
       const data = JSON.parse(lastMessage.data);
       setResults(data.results);
     }
+  };
+
+  const handleClick = (movieId: number) => {
+    setTitle("");
+    setResults([]);
+    navigate(`/${movieId}`);
   };
 
   return (
@@ -69,7 +77,9 @@ export default function SearchBar() {
       <ul>
         {results.map((result) => (
           <li key={result.id}>
-            <Link to={`/${result.id}`}>{result.original_title}</Link>
+            <button type="button" onClick={() => handleClick(result.id)}>
+              {result.original_title}
+            </button>
           </li>
         ))}
       </ul>

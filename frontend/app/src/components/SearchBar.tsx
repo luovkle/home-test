@@ -1,21 +1,30 @@
 import { useState, ChangeEvent } from "react";
 import useWebSocket from "react-use-websocket";
 
+interface Result {
+  id: number;
+  original_title: string;
+}
+
 const ws_url = "ws://localhost:8000/api/v1/search/ws";
 
 export default function SearchBar() {
   const [title, setTitle] = useState("");
+  const [results, setResults] = useState<Result[]>([]);
 
   const { sendMessage, lastMessage } = useWebSocket(ws_url);
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setTitle(target.value);
     sendMessage(title);
-    if (lastMessage) console.log(JSON.parse(lastMessage.data));
+    if (lastMessage) {
+      const data = JSON.parse(lastMessage.data);
+      setResults(data.results);
+    }
   };
 
   return (
-    <form>
+    <div>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -56,6 +65,11 @@ export default function SearchBar() {
           Search
         </button>
       </div>
-    </form>
+      <ul>
+        {results.map((result) => (
+          <li key={result.id}>{result.original_title}</li>
+        ))}
+      </ul>
+    </div>
   );
 }

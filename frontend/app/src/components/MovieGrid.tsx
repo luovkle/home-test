@@ -16,7 +16,11 @@ export default function MovieGrid({ page }: { page: number }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/discover?page=${page}`)
+      .get(
+        `http://${
+          import.meta.env.VITE_BACKEND_HOST
+        }:8000/api/v1/discover?page=${page}`,
+      )
       .then(({ data: { response } }) => {
         setMovies(response.results);
       });

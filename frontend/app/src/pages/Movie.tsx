@@ -40,7 +40,11 @@ export default function Movie() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/discover/${movieId}`)
+      .get(
+        `http://${
+          import.meta.env.VITE_BACKEND_HOST
+        }:8000/api/v1/discover/${movieId}`,
+      )
       .then(({ data: { response } }) => {
         setMovie(response);
       });

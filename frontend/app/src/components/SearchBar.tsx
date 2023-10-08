@@ -7,7 +7,9 @@ interface Result {
   original_title: string;
 }
 
-const ws_url = "ws://localhost:8000/api/v1/search/ws";
+const ws_url = `ws://${
+  import.meta.env.VITE_BACKEND_HOST
+}:8000/api/v1/search/ws`;
 
 export default function SearchBar() {
   const [title, setTitle] = useState("");

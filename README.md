@@ -24,12 +24,12 @@ A few components of this project require environment variables to be configured 
 
 ### MongoDB
 
-Navigate to the mongo/app directory
+Navigate to the mongo directory
 
 Copy the .env.sample file to a new file named .env
 
 ```sh
-cd mongo/app
+cd mongo
 cp .env.sample .env
 ```
 

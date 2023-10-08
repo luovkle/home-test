@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 interface Genre {
   id: number;
@@ -24,6 +24,8 @@ interface MovieType {
 export default function Movie() {
   const { movieId } = useParams();
 
+  const navigate = useNavigate();
+
   const [movie, setMovie] = useState<MovieType>({
     original_title: "",
     poster_path: "",
@@ -46,6 +48,9 @@ export default function Movie() {
 
   return (
     <>
+      <button type="button" onClick={() => navigate(-1)}>
+        Back
+      </button>
       <img
         className="rounded-t-lg"
         src={pictureURL}

@@ -13,7 +13,7 @@ router = APIRouter()
 
 # List movies sorted by popularity
 @router.get("")
-def discover(db: Database = Depends(get_db), *, page: int):
+def many(db: Database = Depends(get_db), *, page: int):
     # Check if the document exists in the database for the specified page
     doc = db.discover.find_one({"page": page})
     if not doc:
@@ -32,3 +32,10 @@ def discover(db: Database = Depends(get_db), *, page: int):
     # Remove the "_id" field before returning the document
     doc.pop("_id")
     return {"response": doc}
+
+
+# Get movie by id
+@router.get("/{id}")
+def single(id: str):
+    response = requests.get(api_url + f"/3/movie/{id}", headers=headers)
+    return {"response": response.json()}

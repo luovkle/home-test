@@ -44,7 +44,7 @@ export default function Movie() {
       .then(({ data: { response } }) => {
         setMovie(response);
       });
-  }, []);
+  }, [movieId]);
 
   return (
     <>

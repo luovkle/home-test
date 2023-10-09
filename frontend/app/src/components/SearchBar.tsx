@@ -75,11 +75,10 @@ export default function SearchBar() {
           {results.map((result) => (
             <li
               key={result.id}
-              className="hover:bg-blue-500 px-2 py-1 rounded-md"
+              className="hover:bg-blue-500 px-2 py-1 rounded-md cursor-pointer"
+              onClick={() => handleClick(result.id)}
             >
-              <button type="button" onClick={() => handleClick(result.id)}>
-                {result.original_title}
-              </button>
+              {result.original_title}
             </li>
           ))}
         </ul>

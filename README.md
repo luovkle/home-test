@@ -20,7 +20,7 @@ cd home-test
 
 ## Set Environment Variables
 
-A few components of this project require environment variables to be configured for proper functionality. Follow the steps below to set up these environment variables:
+**Note for Docker Users:** If you plan to run this application with Docker, you will need to configure environment variables with a private IP address. You can obtain your private IP address using commands such as `ifconfig` on Linux or `ipconfig` on Windows. Please follow the steps below to set up these environment variables:
 
 ### MongoDB
 

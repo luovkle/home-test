@@ -51,17 +51,17 @@ export default function Movie() {
   }, [movieId]);
 
   return (
-    <div className="w-full flex justify-center p-16  text-white">
+    <div className="p-16 text-white">
       <button
         type="button"
         onClick={() => navigate("/")}
-        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 space-x-2 font-semibold text-lg bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded-xl"
+        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 space-x-2 font-semibold text-xl bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded-xl"
       >
         {"<< Back"}
       </button>
-      <div className="flex">
+      <div className="grid grid-cols-1 md:grid-cols-2 space-y-4">
         <img
-          className="rounded-xl object-scale-down"
+          className="rounded-xl object-contain"
           src={pictureURL}
           alt={movie.original_title}
         />
